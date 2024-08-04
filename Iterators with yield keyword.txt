@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+public class FibonacciSequence
+{
+    public IEnumerable<int> Generate(int count)
+    {
+        if (count <= 0)
+            throw new ArgumentOutOfRangeException(nameof(count));
+
+        int a = 0, b = 1;
+        for (int i = 0; i < count; i++)
+        {
+            yield return a;
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var fibonacci = new FibonacciSequence();
+        foreach (var number in fibonacci.Generate(10))
+        {
+            Console.WriteLine(number);
+        }
+    }
+}

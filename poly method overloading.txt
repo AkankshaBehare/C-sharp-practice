@@ -1,0 +1,54 @@
+using System;
+
+public class MathOperations
+{
+    // Method to add two integers
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    public int Add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+
+    // Overloaded method to add two doubles
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    // Overloaded method to add three doubles
+    public double Add(double a, double b, double c)
+    {
+        return a + b + c;
+    }
+
+    // Overloaded method to add a list of integers
+    public int Add(params int[] numbers)
+    {
+        int sum = 0;
+        foreach (var number in numbers)
+        {
+            sum += number;
+        }
+        return sum;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        MathOperations mathOps = new MathOperations();
+
+        // Call different overloaded methods
+        Console.WriteLine(mathOps.Add(2, 3));              // Calls Add(int a, int b)
+        Console.WriteLine(mathOps.Add(2, 3, 4));           // Calls Add(int a, int b, int c)
+        Console.WriteLine(mathOps.Add(2.5, 3.5));          // Calls Add(double a, double b)
+        Console.WriteLine(mathOps.Add(1.1, 2.2, 3.3));     // Calls Add(double a, double b, double c)
+        Console.WriteLine(mathOps.Add(1, 2, 3, 4, 5));     // Calls Add(params int[] numbers)
+    }
+}

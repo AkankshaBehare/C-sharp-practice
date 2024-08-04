@@ -1,0 +1,22 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        double doubleValue = 9.78;
+        int intValue = (int)doubleValue; // Explicit cast from double to int
+        Console.WriteLine($"Double value: {doubleValue}");
+        Console.WriteLine($"Int value: {intValue}"); // Output: 9 (fractional part is truncated)
+
+        int anotherIntValue = 123;
+        byte byteValue = (byte)anotherIntValue; // Explicit cast from int to byte
+        Console.WriteLine($"Int value: {anotherIntValue}");
+        Console.WriteLine($"Byte value: {byteValue}"); // Output: 123
+
+        int largeIntValue = 300;
+        byte overflowedByteValue = (byte)largeIntValue; // Explicit cast with potential overflow
+        Console.WriteLine($"Large int value: {largeIntValue}");
+        Console.WriteLine($"Overflowed byte value: {overflowedByteValue}"); // Output: 44 (300 % 256)
+    }
+}

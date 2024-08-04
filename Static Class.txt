@@ -1,0 +1,39 @@
+using System;
+
+// Define a static class
+public static class MathHelper
+{
+    // Static property
+    public static double Pi { get; } = 3.14159;
+
+    // Static method to calculate the area of a circle
+    public static double CalculateCircleArea(double radius)
+    {
+        return Pi * radius * radius;
+    }
+
+    // Static method to calculate the area of a rectangle
+    public static double CalculateRectangleArea(double width, double height)
+    {
+        return width * height;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Accessing static members without creating an instance
+        double circleRadius = 5;
+        double rectangleWidth = 4;
+        double rectangleHeight = 6;
+
+        // Calling static methods
+        double circleArea = MathHelper.CalculateCircleArea(circleRadius);
+        double rectangleArea = MathHelper.CalculateRectangleArea(rectangleWidth, rectangleHeight);
+
+        // Display results
+        Console.WriteLine($"Area of the circle with radius {circleRadius}: {circleArea}");
+        Console.WriteLine($"Area of the rectangle with width {rectangleWidth} and height {rectangleHeight}: {rectangleArea}");
+    }
+}

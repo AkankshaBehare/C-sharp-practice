@@ -1,0 +1,32 @@
+using System;
+
+public class Box<T>
+{
+    private T _content;
+
+    public void SetContent(T content)
+    {
+        _content = content;
+    }
+
+    public T GetContent()
+    {
+        return _content;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Create a Box for integers
+        Box<int> intBox = new Box<int>();
+        intBox.SetContent(123);
+        Console.WriteLine(intBox.GetContent()); // Output: 123
+
+        // Create a Box for strings
+        Box<string> stringBox = new Box<string>();
+        stringBox.SetContent("Hello Generics");
+        Console.WriteLine(stringBox.GetContent()); // Output: Hello Generics
+    }
+}

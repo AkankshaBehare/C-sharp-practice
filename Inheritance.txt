@@ -1,0 +1,72 @@
+using System;
+
+namespace InheritanceDemo
+{
+    // Base class
+    public class Animal
+    {
+        // Property
+        public string Name { get; set; }
+
+        // Constructor
+        public Animal(string name)
+        {
+            Name = name;
+        }
+
+        // Method
+        public void Eat()
+        {
+            Console.WriteLine($"{Name} is eating.");
+        }
+
+        // Virtual method that can be overridden
+        public virtual void MakeSound()
+        {
+            Console.WriteLine("Some generic animal sound.");
+        }
+    }
+
+    // Derived class
+    public class Dog : Animal
+    {
+        // Constructor
+        public Dog(string name) : base(name)
+        {
+        }
+
+        // Method specific to Dog
+        public void Bark()
+        {
+            Console.WriteLine($"{Name} is barking.");
+        }
+
+        // Override method
+        public override void MakeSound()
+        {
+            Console.WriteLine($"{Name} says Woof!");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create an instance of Animal
+            Animal animal = new Animal("Generic Animal");
+            animal.Eat();
+            animal.MakeSound();
+
+            // Create an instance of Dog
+            Dog dog = new Dog("Buddy");
+            dog.Eat();
+            dog.Bark();
+            dog.MakeSound();  // This will call the overridden method in Dog class
+
+            // Demonstrate polymorphism
+            Animal myDog = new Dog("Max");
+            myDog.Eat();
+            myDog.MakeSound();  // This will call the overridden method in Dog class
+        }
+    }
+}

@@ -1,0 +1,47 @@
+using System;
+
+public class Celsius
+{
+    public double Temperature { get; }
+
+    public Celsius(double temperature)
+    {
+        Temperature = temperature;
+    }
+
+    // Implicit conversion from Celsius to Fahrenheit
+    public static implicit operator Fahrenheit(Celsius celsius)
+    {
+        return new Fahrenheit(celsius.Temperature * 9 / 5 + 32);
+    }
+}
+
+public class Fahrenheit
+{
+    public double Temperature { get; }
+
+    public Fahrenheit(double temperature)
+    {
+        Temperature = temperature;
+    }
+
+    // Implicit conversion from Fahrenheit to Celsius
+    public static implicit operator Celsius(Fahrenheit fahrenheit)
+    {
+        return new Celsius((fahrenheit.Temperature - 32) * 5 / 9);
+    }
+}
+public class Program
+{
+    public static void Main()
+    {
+        Celsius celsius = new Celsius(25);
+        Fahrenheit fahrenheit = celsius; // Implicit conversion from Celsius to Fahrenheit
+
+        Console.WriteLine($"Celsius: {celsius.Temperature}°C");
+        Console.WriteLine($"Fahrenheit: {fahrenheit.Temperature}°F");
+
+        Celsius celsiusBack = fahrenheit; // Implicit conversion from Fahrenheit to Celsius
+        Console.WriteLine($"Converted back to Celsius: {celsiusBack.Temperature}°C");
+    }
+}

@@ -1,0 +1,155 @@
+-> In C# object is versatile datatype i.e. we can use it anywhere when we don't know the type of data we get i.e. it can hold int,string,bool etc.
+
+Collections in C#
+
+Non-Generic Collections: 
+
+1. ArrayList - 
+
+namespace FirstProgram
+{
+ 
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList arr = new ArrayList();
+            arr.Add(1);
+            arr.Add(2);
+            arr.Add(3);
+
+            Console.WriteLine($"Length of ArrayList is: {arr.Count}"); // length of arraylist
+            Console.WriteLine($"Element found in ArrayList or not: {arr.Contains("2")}"); // contains method of arraylist
+
+            arr.Insert(3, 4); // inserting an element at particular index
+            Console.WriteLine($"Length of ArrayList after inserting new element: {arr.Count}");
+
+            foreach (int i in arr) Console.WriteLine(i);
+        }
+    }
+}
+
+
+2. HashTable - 
+
+            Hashtable ht = new Hashtable();
+            ht.Add("1","one");
+            ht.Add("2","two");
+            ht.Add("3","three");
+
+            // iterating hashtable
+            foreach (DictionaryEntry i in ht)
+            {
+                Console.Write($"{i.Key}: {i.Value}");
+                Console.WriteLine();
+            }
+
+            // contains method of hashtable
+            Console.WriteLine($"Element present or not : {ht.Contains("1")}");
+
+            // remove an element
+               ht.Remove("1");
+         
+
+
+3. Queue -
+      
+            Queue queue = new Queue();
+            queue.Enqueue("one");
+            queue.Enqueue("two");
+            queue.Enqueue("three");
+
+            Console.WriteLine($"Length of queue is : {queue.Count}");
+
+
+            // top element of queue
+            Console.WriteLine($"Top element of queue is : {queue.Peek()}");
+
+            // remove an element from top of queue
+            queue.Dequeue();
+
+            // iterating queue
+            foreach (string i in queue)
+            {
+                Console.WriteLine(i);
+            }
+
+
+4. Stack - 
+
+
+        Stack st = new Stack();
+ 	st.Push("a");
+
+
+
+Generic Collections:
+
+
+1. Dictionary - 
+
+    Dictionary<string, string> dict =
+    new Dictionary<string, string>();
+
+	dict.Add("one", "name");
+	dict.Add("two", "class");
+
+Methods - ContainsKey, ContainsValue
+
+        foreach(KeyValuePair<string,string> entry in dict){
+		Console.WriteLine(entry.Key, entry.Value);
+ 	}
+
+
+2. HashSet - 
+
+
+	HashSet<string> set = new HashSet<string>();
+ 	set.Add("abc");
+
+
+3. Linked List - 
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace FirstProgram
+{
+ 
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           LinkedList<string> ll = new LinkedList<string>();
+            ll.AddFirst("abc");
+            ll.AddLast("def");
+
+            Console.Write("Linked List: ");
+            foreach (string s in ll)
+            {
+                Console.Write($"{s} ");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"It contains given element: {ll.Contains("abc")}");
+            ll.Remove("abc");
+
+            // searching for a node in linked list
+            LinkedListNode<string> foundNode = ll.Find("def");
+            Console.WriteLine($"It contains given element: {foundNode.Value}");          
+        }
+    }
+}
+
+
+
+4. Queue - 
+
+    Queue<int> q = new Queue<int>();
+
+
+5. Stack - adjust syntax accordingly.
+
+
+   

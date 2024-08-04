@@ -1,0 +1,21 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Animal animal = new Dog(); // Implicit upcast
+
+        Dog dog = animal as Dog; // Safe cast using 'as'
+        if (dog != null)
+        {
+            dog.Bark(); // Method from Dog
+        }
+
+        if (animal is Dog)
+        {
+            Dog anotherDog = (Dog)animal; // Safe cast after checking type
+            anotherDog.Bark();
+        }
+    }
+}

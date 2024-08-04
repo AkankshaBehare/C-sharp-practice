@@ -1,0 +1,43 @@
+using System;
+
+public class Animal
+{
+    // Base class method
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound");
+    }
+}
+
+public class Dog : Animal
+{
+    // Overriding the base class method
+    public override void MakeSound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+public class Cat : Animal
+{
+    // Overriding the base class method
+    public override void MakeSound()
+    {
+        Console.WriteLine("Cat meows");
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Create an array of Animal references
+        Animal[] animals = new Animal[] { new Dog(), new Cat() };
+
+        // Iterate through the array and call MakeSound
+        foreach (var animal in animals)
+        {
+            animal.MakeSound(); // Calls the overridden method
+        }
+    }
+}

@@ -1,0 +1,81 @@
+using System;
+
+// Define an interface
+public interface IShape
+{
+    // Properties
+    double Area { get; }
+
+    // Methods
+    void Draw();
+}
+
+// Implement the interface in a class
+public class Circle : IShape
+{
+    public double Radius { get; set; }
+
+    // Constructor
+    public Circle(double radius)
+    {
+        Radius = radius;
+    }
+
+    // Implement the Area property
+    public double Area => Math.PI * Radius * Radius;
+
+    // Implement the Draw method
+    public void Draw()
+    {
+        Console.WriteLine($"Drawing a circle with radius {Radius}");
+    }
+}
+
+// Implement the interface in another class
+public class Rectangle : IShape
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    // Constructor
+    public Rectangle(double width, double height)
+    {
+        Width = width;
+        Height = height;
+    }
+
+    // Implement the Area property
+    public double Area => Width * Height;
+
+    // Implement the Draw method
+    public void Draw()
+    {
+        Console.WriteLine($"Drawing a rectangle with width {Width} and height {Height}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Create instances of classes implementing IShape
+        IShape circle = new Circle(5);
+        IShape rectangle = new Rectangle(4, 6);
+
+        // Use the interface methods
+        Console.WriteLine($"Circle Area: {circle.Area}");
+        circle.Draw();
+
+        Console.WriteLine($"Rectangle Area: {rectangle.Area}");
+        rectangle.Draw();
+
+        // Demonstrate polymorphism
+        DrawShape(circle);
+        DrawShape(rectangle);
+    }
+
+    static void DrawShape(IShape shape)
+    {
+        shape.Draw();
+    }
+}
