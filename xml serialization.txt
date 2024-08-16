@@ -1,0 +1,33 @@
+using System;
+using System.Xml.Serialization;
+using System.IO;
+
+public class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person person = new Person
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            Age = 30
+        };
+
+        XmlSerializer serializer = new XmlSerializer(typeof(Person));
+
+        using (StringWriter writer = new StringWriter())
+        {
+            serializer.Serialize(writer, person);
+            string xml = writer.ToString();
+            Console.WriteLine("Serialized XML:");
+            Console.WriteLine(xml);
+        }
+    }
+}

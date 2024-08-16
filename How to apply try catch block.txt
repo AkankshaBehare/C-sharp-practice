@@ -1,0 +1,13 @@
+How to apply try catch block?
+Views (Virtual Table)
+Apply loop on table 
+While
+Cursors
+Triggers(After triggers and Before Triggers)
+CTE (common table expression)
+@@Row Number
+How do we create Identity : Auto Generated Identity
+Performance Optimization:
+Indexes(Clustered and Non Clustered)
+Function in SQL server (Inline, Scaler etc)
+Procedures

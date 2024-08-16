@@ -1,0 +1,31 @@
+using System;
+using System.Xml.Serialization;
+using System.IO;
+
+public class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string xml = @"<?xml version=""1.0"" encoding=""utf-16""?>
+                       <Person xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+                         <FirstName>John</FirstName>
+                         <LastName>Doe</LastName>
+                         <Age>30</Age>
+                       </Person>";
+
+        XmlSerializer serializer = new XmlSerializer(typeof(Person));
+
+        using (StringReader reader = new StringReader(xml))
+        {
+            Person person = (Person)serializer.Deserialize(reader);
+            Console.WriteLine($"Deserialized Person: {person.FirstName} {person.LastName}, Age: {person.Age}");
+        }
+    }
+}

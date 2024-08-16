@@ -1,0 +1,28 @@
+using System;
+namespace Delegatesproject
+{
+public delegate void AddDelegate(int x, int y);  
+public delegate string SayDelegate(string str);
+class Program
+ {
+	public void AddNums(int a, int b)
+		{
+
+                    Console.WriteLine(a+b);
+		}
+        public static string SayHello(string name)
+		{
+		    return "Hello"+name;
+                }
+        static void Main(string[]args)
+		{
+		Program p=new Program();
+		AddDelegate ad=new AddDelegate(p.AddNums);
+                ad(100,50);                                             //We can also use ad.Invoke(100,50)
+		SayDelegate sd=new SayDelegate(Program.SayHello);      // Since say hello is  static use class name to initiate it
+		string str= sd("Raju");
+                Console.WriteLine(str);
+                Console.ReadLine();
+		}
+}
+}

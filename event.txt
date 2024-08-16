@@ -1,0 +1,38 @@
+using System;
+
+public class Button
+{
+    // Define an event based on a delegate
+    public event EventHandler Click;
+
+    // Method to trigger the event
+    public void OnClick()
+    {
+        if (Click != null)
+        {
+            Click(this, EventArgs.Empty);
+        }
+    }
+}
+
+ // Event handler method
+    private static void Button_Click(object sender, EventArgs e)
+    {
+        Console.WriteLine("Button was clicked!");
+    }
+
+public class Program
+{
+    static void Main()
+    {
+        Button button = new Button();
+
+        // Subscribe to the event
+        button.Click += Button_Click;
+
+        // Trigger the event
+        button.OnClick();
+    }
+
+  
+}
