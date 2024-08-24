@@ -1,0 +1,64 @@
+// Product Interface
+public interface IShape
+{
+    void Draw();
+}
+
+// Concrete Products
+public class Circle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing a Circle.");
+    }
+}
+
+public class Square : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing a Square.");
+    }
+}
+
+// Creator (Factory) Class
+public abstract class ShapeFactory
+{
+    public abstract IShape CreateShape();
+}
+
+// Concrete Creator Classes
+public class CircleFactory : ShapeFactory
+{
+    public override IShape CreateShape()
+    {
+        return new Circle();
+    }
+}
+
+public class SquareFactory : ShapeFactory
+{
+    public override IShape CreateShape()
+    {
+        return new Square();
+    }
+}
+
+// Client Code
+class Program
+{
+    static void Main(string[] args)
+    {
+        ShapeFactory factory;
+
+        // Create a Circle
+        factory = new CircleFactory();
+        IShape shape1 = factory.CreateShape();
+        shape1.Draw();
+
+        // Create a Square
+        factory = new SquareFactory();
+        IShape shape2 = factory.CreateShape();
+        shape2.Draw();
+    }
+}

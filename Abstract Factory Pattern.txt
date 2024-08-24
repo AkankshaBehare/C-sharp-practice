@@ -1,0 +1,101 @@
+// Abstract Factory Interface
+public interface IShapeFactory
+{
+    IShape CreateCircle();
+    IShape CreateSquare();
+}
+
+// Abstract Product Interface
+public interface IShape
+{
+    void Draw();
+}
+
+// Concrete Products for Basic Shapes
+public class BasicCircle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing a Basic Circle.");
+    }
+}
+
+public class BasicSquare : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing a Basic Square.");
+    }
+}
+
+// Concrete Products for Fancy Shapes
+public class FancyCircle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing a Fancy Circle.");
+    }
+}
+
+public class FancySquare : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing a Fancy Square.");
+    }
+}
+
+// Concrete Factory for Basic Shapes
+public class BasicShapeFactory : IShapeFactory
+{
+    public IShape CreateCircle()
+    {
+        return new BasicCircle();
+    }
+
+    public IShape CreateSquare()
+    {
+        return new BasicSquare();
+    }
+}
+
+// Concrete Factory for Fancy Shapes
+public class FancyShapeFactory : IShapeFactory
+{
+    public IShape CreateCircle()
+    {
+        return new FancyCircle();
+    }
+
+    public IShape CreateSquare()
+    {
+        return new FancySquare();
+    }
+}
+
+// Client Code
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create a factory for Basic Shapes
+        IShapeFactory factory = new BasicShapeFactory();
+
+        // Create Basic Circle and Square
+        IShape circle = factory.CreateCircle();
+        circle.Draw();  // Output: Drawing a Basic Circle.
+
+        IShape square = factory.CreateSquare();
+        square.Draw();  // Output: Drawing a Basic Square.
+
+        // Switch to Fancy Shapes
+        factory = new FancyShapeFactory();
+
+        // Create Fancy Circle and Square
+        circle = factory.CreateCircle();
+        circle.Draw();  // Output: Drawing a Fancy Circle.
+
+        square = factory.CreateSquare();
+        square.Draw();  // Output: Drawing a Fancy Square.
+    }
+}

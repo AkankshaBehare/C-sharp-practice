@@ -1,0 +1,70 @@
+// Abstraction (Interface)
+public interface IMessageSender
+{
+    void SendMessage(string message);
+}
+
+// Low-level module 1: EmailSender
+public class EmailSender : IMessageSender
+{
+    public void SendMessage(string message)
+    {
+        Console.WriteLine("Sending Email: " + message);
+    }
+}
+
+// Low-level module 2: SmsSender
+public class SmsSender : IMessageSender
+{
+    public void SendMessage(string message)
+    {
+        Console.WriteLine("Sending SMS: " + message);
+    }
+}
+
+// Low-level module 3: WhatsAppSender
+public class WhatsAppSender : IMessageSender
+{
+    public void SendMessage(string message)
+    {
+        Console.WriteLine("Sending WhatsApp Message: " + message);
+    }
+}
+
+// High-level module: NotificationService
+public class NotificationService
+{
+    private IMessageSender messageSender;
+
+    // Injecting the dependency via constructor
+    public NotificationService(IMessageSender sender)
+    {
+        this.messageSender = sender;
+    }
+
+    public void Notify(string message)
+    {
+        messageSender.SendMessage(message);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // High-level module does not care about the specific type of message sender
+        IMessageSender emailSender = new EmailSender();
+        IMessageSender smsSender = new SmsSender();
+        IMessageSender whatsappSender = new WhatsAppSender();
+
+        // Injecting dependencies
+        NotificationService notificationServiceEmail = new NotificationService(emailSender);
+        notificationServiceEmail.Notify("Hello via Email!");
+
+        NotificationService notificationServiceSMS = new NotificationService(smsSender);
+        notificationServiceSMS.Notify("Hello via SMS!");
+
+        NotificationService notificationServiceWhatsApp = new NotificationService(whatsappSender);
+        notificationServiceWhatsApp.Notify("Hello via WhatsApp!");
+    }
+}

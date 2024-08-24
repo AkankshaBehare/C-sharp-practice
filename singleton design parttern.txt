@@ -1,0 +1,58 @@
+using System;
+
+public class ShapeCalculator
+{
+    // Private static field to hold the single instance of the class
+    private static ShapeCalculator _instance;
+
+    // Private constructor to prevent direct instantiation
+    private ShapeCalculator() { }
+
+    // Public static method to provide global access to the instance
+    public static ShapeCalculator Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new ShapeCalculator();
+            }
+            return _instance;
+        }
+    }
+
+    // Method to calculate the area of a rectangle
+    public double CalculateRectangleArea(double length, double width)
+    {
+        return length * width;
+    }
+
+    // Method to calculate the area of a circle
+    public double CalculateCircleArea(double radius)
+    {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Access the Singleton instance of ShapeCalculator
+        ShapeCalculator calculator = ShapeCalculator.Instance;
+
+        // Calculate the area of a rectangle
+        double rectangleArea = calculator.CalculateRectangleArea(10, 5);
+        Console.WriteLine("Rectangle Area: " + rectangleArea);
+
+        // Calculate the area of a circle
+        double circleArea = calculator.CalculateCircleArea(7);
+        Console.WriteLine("Circle Area: " + circleArea);
+
+        // Accessing the same instance again to show Singleton behavior
+        ShapeCalculator calculator2 = ShapeCalculator.Instance;
+
+        // Check if both instances are the same (They should be the same instance)
+        Console.WriteLine("Are calculator and calculator2 the same instance? " + (calculator == calculator2));
+    }
+}
